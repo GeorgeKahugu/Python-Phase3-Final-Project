@@ -1,28 +1,21 @@
 # lib/cli.py
 
-from helpers import (
-    exit_program,
-    helper_1
-)
+from manager import Manager
 
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+def get_manager():
+    print("The Artists assigned to a manager with their various Songs and Genre")
+    a = input ("Enter Manager's name: ")
+    b = input ("Enter Song Genre: ")
 
+    manager = Manager(a, b)
+    print(manager)
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+# def menu():
+#     print("Please select an option:")
+#     print("0. Exit the program")
+#     print("1. Some useful function")
 
 
 if __name__ == "__main__":
-    main()
+       get_manager
