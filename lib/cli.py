@@ -1,21 +1,21 @@
 # lib/cli.py
 
-from manager import Manager
+from artist import Artist
 
 
-def get_manager():
-    print("The Artists assigned to a manager with their various Songs and Genre")
-    a = input ("Enter Manager's name: ")
-    b = input ("Enter Song Genre: ")
-
-    manager = Manager(a, b)
-    print(manager)
-
-# def menu():
-#     print("Please select an option:")
-#     print("0. Exit the program")
-#     print("1. Some useful function")
-
+def get_assigned_manager():
+    while True:
+        print("Various Artists assigned to a manager with their various Songs and Genre :")
+        a = input ("Artist Name :")
+        b = input ("Gender :")
+        c = input ("Email :")
+        d = input ("Genre of Music :")
+        e = input ("No of Songs Assigned :")
+        f = input ("Manager Assigned :")
+        # g = input ("Exit app :")
+           
+           
 
 if __name__ == "__main__":
-       get_manager
+    get_assigned_manager()
+
