@@ -148,7 +148,7 @@ class Manager:
         sql = "SELECT * FROM Manager"
         cursor.execute(sql)
         rows = cursor.fetchall()
-        managers = []
+        manager = []
         for row in rows:
             manager = cls(
                 id=row[0],
@@ -160,8 +160,8 @@ class Manager:
                 Team=row[6],
                 No_of_Artists_Assigned=row[7]
             )
-            managers.append(manager)
-        return managers
+            manager.append(manager)
+        return manager
 
    
 

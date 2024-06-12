@@ -34,21 +34,50 @@ if retrieved_manager is not None:
     deleted_manager = Manager.find_by_id(Manager.id)
     print(deleted_manager)  
 
+# Retrieve an artist by id
+artist_id = 1
+retrieved_artist = Artist.find_by_id(artist_id)
+print(retrieved_artist)
+
+#checking if an artist exists
+if retrieved_artist is not None:
+    print(retrieved_artist)
+
+# Update an Artist name
+    retrieved_artist.Artist_Name = ""
+    print(f"Updated artists's name to:{retrieved_artist.Artist_Name}")
+
+# Delete the artist
+    retrieved_artist.delete()
+
+# Verify deletion
+    deleted_artist = Artist.find_by_id(Artist.id)
+    print(deleted_artist)  
+
+
+
 #Adding Managers to the Database
-manager1 = Manager(
-    "Clive", "Brown", "Male", "clivebrown@iworld.com",  "+1972345672", "Lion", 2)
+manager1 = Manager("Clive", "Brown", "Male", "clivebrown@iworld.com",  "+1972345672", "Lion", 2)
+
+manager2 = Manager("Nadia", "Ross", "Female", "nadiaross@iworld.com", "+1975467231", "Panther", 2)
+
+manager3 = Manager("James", "Roberts", "Male", "jamesroberts@iworld.com", "+2547865432", "Tiger", 2)
+
+manager4 = Manager("Samantha", "Williams", "Female", "samanthawilliams@iworld.com", "+1873785218", "Leopard", 2)
 
 
-manager2 = Manager(
-    "Nadia", "Ross", "Female", "nadiaross@iworld.com", "+1975467231", "Panther", 2)
+#Adding Artists to the Database
+artist1 = Artist("Breezy", "Male", "breezy@artistworld.com", "RnB", 2, "Clive", 1 )
+artist2 = Artist (  "Ivy", "Female", "Ivy@artistworld.com", "Rnb", 2, "Clive", 2)
 
-artist1 = Artist (
-    "Rocky", "Male", "rocky1@artistworld.com", "Soul", 2, "Clive")
-
+#Manager
 manager1.save()
 manager2.save()
+manager3.save()
+manager4.save()
 
+#Artist
 artist1.save()
+artist2.save()
 
-print(manager1)
-print(artist1)
+
