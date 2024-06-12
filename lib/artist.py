@@ -2,7 +2,7 @@ from test import cursor, conn
 
 class Artist:
 
-    def __init__(self, id, Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned):
+    def __init__(self, Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned, id= None):
         self.id = id
         self.Artist_Name = Artist_name
         self.Gender = Gender
@@ -14,7 +14,7 @@ class Artist:
      
     @classmethod
     def create_table(cls):
-        '''This method will create a Artist table in our db'''
+        '''This method will create an Artist table in our db'''
         sql = """
             CREATE TABLE Artist (
             id INTEGER PRIMARY KEY,
@@ -40,21 +40,21 @@ class Artist:
 
     def save(self):
         sql = """
-           CREATE TABLE Artist (
-            id INTEGER PRIMARY KEY,
-            Artist_Name TEXT NOT NULL,
-            Gender TEXT,
-            Email TEXT,
-            Genre_of_Music TEXT,
-            No_of_songs_Assigned INTEGER
-            Manager_Assigned TEXT     
-            )
+           INSERT INTO Artist(
+            Artist_Name ,
+            Gender,
+            Email,
+            Genre_of_Music ,
+            No_of_songs_Assigned,
+            Manager_Assigned,     
+            )VALUES (?, ?, ?, ?, ?, ?)
         """
 
-        cursor.execute (sql, (self.Artist_Name, self.Gender,  self.Email, self.Genre_of_Music, self.No_of_songs_Assigned, self.Manager_Assigned ))
+        cursor.execute(sql, (self.Artist_Name, self.Gender,  self.Email, self.Genre_of_Music, self.No_of_songs_Assigned, self.Manager_Assigned))
         conn.commit()
        
-        
+        self.id = cursor.latrowid
+        print(self.id)
        
     
     def __repr__(self):
