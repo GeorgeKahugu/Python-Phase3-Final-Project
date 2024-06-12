@@ -54,6 +54,23 @@ if retrieved_artist is not None:
     deleted_artist = Artist.find_by_id(Artist.id)
     print(deleted_artist)  
 
+#Creating a new song
+song1=Song.create("Greatful", "RnB")
+
+#Find song by ID
+retrieved_song = Song.find_by_id(song1.id)
+print(retrieved_song)
+
+# Checking if a song exists
+if retrieved_song is not None:  # Checking if a song exists
+    print(retrieved_song)
+
+# Get all songs
+all_songs = Song.get_all()
+print(all_songs)
+
+# Delete a song by ID
+Song.delete(song1.id)
 
 
 #Adding Managers to the Database
@@ -70,6 +87,10 @@ manager4 = Manager("Samantha", "Williams", "Female", "samanthawilliams@iworld.co
 artist1 = Artist("Breezy", "Male", "breezy@artistworld.com", "RnB", 2, "Clive", 1 )
 artist2 = Artist (  "Ivy", "Female", "Ivy@artistworld.com", "Rnb", 2, "Clive", 2)
 
+
+
+song1= Song("Greatfull", "RnB")
+
 #Manager
 manager1.save()
 manager2.save()
@@ -81,3 +102,5 @@ artist1.save()
 artist2.save()
 
 
+#Songs
+song1.save()
