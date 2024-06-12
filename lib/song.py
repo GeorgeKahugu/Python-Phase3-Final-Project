@@ -7,6 +7,7 @@ class Song:
         self.Song_title = Song_title
         self.Genre = Genre
 
+#Calling the property Methods
     @property
     def Song_title(self):
         return self._Song_title
@@ -27,7 +28,9 @@ class Song:
             raise ValueError("Genre cannot be empty")
         self._Genre=value
 
-        
+#Calling the class methods using CRUD operations specifically(create,delete,get all and find by id) as per the brief  
+# 
+# Creating The Table    
     @classmethod
     def create_table(cls):
         '''This method will create a Song table in our db'''
@@ -42,38 +45,48 @@ class Song:
         cursor.execute(sql)
         conn.commit()
 
+#Dropping the Table
     @classmethod
     def drop_table(cls):
         sql = """
            DROP TABLE IF EXISTS Song
-        """
+        """ 
         cursor.execute(sql)
         conn.commit()
 
-    
-       
-        def save(self):
-            if self.id is None:
-                sql = """
-                    INSERT INTO Song (Song_title, Genre)
-                    VALUES (?, ?)
-                """
-                cursor.execute(sql, (self.Song_title, self.Genre))
-                self.id = cursor.lastrowid
-            else:
-                sql = """
-                    UPDATE Song
-                    SET Song_title = ?, Genre = ?
-                    WHERE id = ?
-                """
+
+#Saving the Table    
+    def save(self):
+        if self.id is None:
+            sql = """
+                INSERT INTO Song (Song_title, Genre)
+                VALUES (?, ?)
+            """
+            cursor.execute(sql, (self.Song_title, self.Genre))
+            self.id = cursor.lastrowid
+        else:
+            sql = """
+                UPDATE Song
+                SET Song_title = ?, Genre = ?
+                WHERE id = ?
+            """
             cursor.execute(sql, (self.Song_title, self.Genre, self.id))
         conn.commit()
 
+#Deleting the Table
+    def delete(self):
+        if self.id is None:
+            raise ValueError("Song does not exist")
+        sql = "DELETE FROM Song WHERE id = ?"
+        cursor.execute(sql, (self.id,))
+        conn.commit()
+        self.id = None
+   
 
     @classmethod
     def create (cls,Song_title, Genre):
         song = cls(id, Song_title, Genre)
-        # song.save()
+        song.save()
         return song
     
     @classmethod
@@ -89,15 +102,11 @@ class Song:
         cursor.execute(sql, (id,))
         row = cursor.fetchone()
         if row:
-            return cls(id=row[0], Song_title=row[1], Genre=row[2])
+            return cls(
+                id=row[0], 
+                Song_title=row[1],
+                Genre=row[2])
         return None
-    
-    @classmethod
-    def delete(cls,id):
-        sql = "DELETE FROM Song WHERE id = ?"
-        cursor.execute(sql, (id,))
-        conn.commit()
-                    
     
     def __repr__(self):
         return f"<Song('{self.Song_title}', '{self.Genre}'>"
