@@ -1,6 +1,7 @@
 
 from test import cursor, conn      
 
+#Calling the Manager class
 class Manager:
 
     def __init__(self, first_name, last_name, gender, email, phone_number, genre, no_of_artists_assigned, id = None):
@@ -73,6 +74,7 @@ class Manager:
     def no_of_artists_assigned(self, value):
         self._no_of_artists_assigned = value
 
+#Calling the class methods ORM using CRUD operations specifically(create,delete,get all and find by id) as per the brief  
     @classmethod
     def create_table(cls):
         '''This method will create a manager table in our db'''

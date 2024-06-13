@@ -28,11 +28,11 @@ if retrieved_manager is not None:
     print(f"Updated manager's first name to:{retrieved_manager.first_name}")
 
 # Delete the manager
-    retrieved_manager.delete()
+    # retrieved_manager.delete()
 
 # Verify deletion
-    deleted_manager = Manager.find_by_id(Manager.id)
-    print(deleted_manager)  
+    # deleted_manager = Manager.find_by_id(Manager.id)
+    # print(deleted_manager)  
 
 # Retrieve an artist by id
 artist_id = 1

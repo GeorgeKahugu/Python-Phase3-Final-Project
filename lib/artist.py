@@ -2,6 +2,7 @@ from test import cursor, conn
 
 #creating an Artist class
 class Artist:
+    
 
     def __init__(self, artist_name, gender, email, genre_of_music, no_of_songs_assigned, manager_assigned,id=None):
         self.id = id
