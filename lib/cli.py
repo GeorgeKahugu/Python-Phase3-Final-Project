@@ -62,7 +62,7 @@ def get_assigned_manager():
          if manager:
             print(f"Artist: {artist.artist_name}, Song Genre: {artist.genre_of_music}, Manager:{manager.first_name} {manager.last_name}")
          else:
-            print(f"Manager with ID {artist.manager_assigned} not found")
+            print(f"Manager with ID {artist.manager_assigned} was found")
     else:
         print(f"Artist with ID {artist_id} not found ")
 
