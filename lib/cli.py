@@ -41,7 +41,16 @@ def create_artist():
       artist_dict[artist.id] = artist
       print(f"Artist{artist.Artist_Name} created with ID {artist.id}")
 
-    
+def create_song():
+    Song_title = input("Song Title: ")
+    Genre = input("Genre: ")
+
+    song= Song(Song_title, Genre)
+    song.save()
+    songs.append(song)
+    song_dict[song.id] = song
+    print(f"Song {song.Song_title} created with ID {song.id}")
+
 
 def get_assigned_manager():
  
