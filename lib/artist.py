@@ -1,5 +1,6 @@
 from test import cursor, conn
 
+#creating an Artist class
 class Artist:
 
     def __init__(self, artist_name, gender, email, genre_of_music, no_of_songs_assigned, manager_assigned,id=None):
@@ -9,9 +10,9 @@ class Artist:
         self.email = email
         self.genre_of_music = genre_of_music
         self.no_of_songs_assigned = no_of_songs_assigned
-        self.Manager_Assigned = manager_assigned
+        self.manager_assigned = manager_assigned
 
-    
+    #property and setter methods
     @property
     def artist_name(self):
         return self._artist_name
@@ -19,7 +20,7 @@ class Artist:
     @artist_name.setter
     def artist_name(self, value):
         if not isinstance(value,str):
-            raise TypeError("Artist Name must be a string")
+            raise TypeError("artist Name must be a string")
         self._artist_name = value
 
     @property
@@ -29,7 +30,7 @@ class Artist:
     @gender.setter
     def gender(self,value):
         if value not in ["Male", "Female", "Other"]:
-            raise ValueError("Gender must be Male, Female or Other")
+            raise ValueError("gender must be Male, Female or Other")
         self._gender = value
 
     @property
@@ -38,7 +39,7 @@ class Artist:
     @email.setter
     def email(self,value):
         if not isinstance(value, str):
-            raise TypeError("Email must be a string")
+            raise TypeError("email must be a string")
         self._email = value
     
     @property
@@ -48,16 +49,16 @@ class Artist:
     @genre_of_music.setter
     def genre_of_music(self, value):
         if not isinstance(value, str):
-            raise TypeError("Genre of Music must be a string")
+            raise TypeError("genre of music must be a string")
         self._genre_of_music = value
 
     @property
     def no_of_songs_assigned(self):
-        return self._No_of_songs_assigned
+        return self._no_of_songs_assigned
     @no_of_songs_assigned.setter
     def no_of_songs_assigned(self, value):
         if not isinstance(value, int):
-            raise TypeError("No of songs assigned must be an integer")
+            raise TypeError("no of songs assigned must be an integer")
         self._no_of_songs_assigned = value
 
     @property
@@ -67,16 +68,16 @@ class Artist:
     @manager_assigned.setter
     def manager_assigned(self, value):
         if not isinstance(value, str):
-            raise TypeError("Manager Assigned must be a string")
+            raise TypeError("manager assigned must be a string")
         self._manager_assigned = value
     
      
-    #implementation of the classmethods 
+#Calling the class methods ORM using CRUD operations specifically(create,delete,get all and find by id) as per the brief  
     @classmethod
     def create_table(cls):
-        '''This method will create an Artist table in our db'''
+        '''This method will create an artist table in our db'''
         sql = """
-            CREATE TABLE Artist (
+            CREATE TABLE artist (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             artist_Name TEXT NOT NULL,
             gender TEXT,
@@ -93,14 +94,14 @@ class Artist:
     @classmethod
     def drop_table(cls):
         sql = """
-           DROP TABLE IF EXISTS Artist
+           DROP TABLE IF EXISTS artist
         """
         cursor.execute(sql)
         conn.commit()
 
     def save(self):
         sql = """
-           INSERT INTO Artist(
+           INSERT INTO artist(
             artist_Name ,
             gender,
             email,
@@ -118,8 +119,8 @@ class Artist:
        
     def delete(self):
         if self.id is None:
-            raise Exception("You can't delete an Artist that doesn't exist")
-        sql = "DELETE FROM Artist WHERE id = ?"
+            raise Exception("You can't delete an artist that doesn't exist")
+        sql = "DELETE FROM artist WHERE id = ?"
         cursor.execute(sql, (self._id,))
         conn.commit()
         self.id = None
@@ -127,24 +128,24 @@ class Artist:
 
     @classmethod
     def find_by_id(cls, artist_id):
-        sql = "SELECT * FROM Artist WHERE id = ?"
+        sql = "SELECT * FROM artist WHERE id = ?"
         cursor.execute(sql, (artist_id,))
         row = cursor.fetchone()
         if row:
             return cls(
-                Artist_name=row[1],
-                Gender=row[2],
-                Email=row[3],
-                Genre_of_Music=row[4],
-                No_of_songs_assigned=row[5],
-                Manager_assigned=row[6],
+                artist_name=row[1],
+                gender=row[2],
+                email=row[3],
+                genre_of_music=row[4],
+                no_of_songs_assigned=row[5],
+                manager_assigned=row[6],
                 id=row[0]
             )
         return None
      
     @classmethod
     def get_all(cls):
-        sql = "SELECT * FROM Artist"
+        sql = "SELECT * FROM artist"
         cursor.execute(sql)
         rows = cursor.fetchall()
         artists = []
@@ -155,15 +156,12 @@ class Artist:
                 gender = row[2],
                 email = row[3],
                 genre_of_music = row[4],
-                No_of_songs_Assigned = row[5],
-                Manager_Assigned = row[6]
+                no_of_songs_assigned = row[5],
+                manager_assigned = row[6]
             )
             artists.append(artist)
         return artists
         
-
-
-    
     def __repr__(self):
         return f"<artist('{self.artist_name}', '{self.gender}, '{self.email}')>"
          

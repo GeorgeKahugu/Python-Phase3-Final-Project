@@ -44,8 +44,8 @@ if retrieved_artist is not None:
     print(retrieved_artist)
 
 # Update an Artist name
-    retrieved_artist.Artist_Name = ""
-    print(f"Updated artists's name to:{retrieved_artist.Artist_Name}")
+    retrieved_artist.artist_name = ""
+    print(f"Updated artists's name to:{retrieved_artist.artist_name}")
 
 # Delete the artist
     retrieved_artist.delete()
@@ -77,18 +77,18 @@ print(all_songs)
 
 
 #Adding Managers to the Database
-manager1 = Manager("Clive", "Brown", "Male", "clivebrown@iworld.com",  "+1972345672", "RnB", 2)
+manager1 = Manager("Clive", "Brown", "Male", "clivebrown@iworld.com",  "+1972345672", "HipHop", 2)
 
-manager2 = Manager("Nadia", "Ross", "Female", "nadiaross@iworld.com", "+1975467231", "", 2)
+manager2 = Manager("Nadia", "Ross", "Female", "nadiaross@iworld.com", "+1975467231", "RnB", 2)
 
-manager3 = Manager("James", "Roberts", "Male", "jamesroberts@iworld.com", "+2547865432", "Tiger", 2)
+manager3 = Manager("James", "Roberts", "Male", "jamesroberts@iworld.com", "+2547865432", "Rap", 2)
 
-manager4 = Manager("Samantha", "Williams", "Female", "samanthawilliams@iworld.com", "+1873785218", "Leopard", 2)
+manager4 = Manager("Samantha", "Williams", "Female", "samanthawilliams@iworld.com", "+1873785218", "Gospel", 2)
 
 
 #Adding Artists to the Database
-artist1 = Artist("Breezy", "Male", "breezy@artistworld.com", "RnB", 2, "Clive",1)
-artist2 = Artist (  "Ivy", "Female", "Ivy@artistworld.com", "Rnb", 2, "Clive",2)
+artist1 = Artist("Breezy", "Male", "breezy@artistworld.com", "RnB", 2, "Nadia Ross",1)
+artist2 = Artist (  "Ivy", "Female", "Ivy@artistworld.com", "Rnb", 2, "Nadia Ross",2)
 
 
 

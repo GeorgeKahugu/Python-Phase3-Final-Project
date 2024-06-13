@@ -50,10 +50,10 @@ class Manager:
         self._email = value
 
     @property
-    def phone_pumber(self):
+    def phone_number(self):
         return self._phone_number
 
-    @phone_number.setter
+    @phone_number.setter 
     def phone_number(self, value):
         self._phone_number = value
 
@@ -75,9 +75,9 @@ class Manager:
 
     @classmethod
     def create_table(cls):
-        '''This method will create a Manager table in our db'''
+        '''This method will create a manager table in our db'''
         sql = """
-            CREATE TABLE Manager (
+            CREATE TABLE manager (
             id INTEGER PRIMARY KEY,
             first_name TEXT NOT NULL,
             last_name TEXT NOT NULL,
@@ -94,14 +94,14 @@ class Manager:
     @classmethod
     def drop_table(cls):
         sql = """
-           DROP TABLE IF EXISTS Manager
+           DROP TABLE IF EXISTS manager
         """
         cursor.execute(sql)
         conn.commit()
 
     def save(self):
         sql = """
-            INSERT INTO Manager (
+            INSERT INTO manager (
             first_name,
             last_name,
             gender,
@@ -119,15 +119,15 @@ class Manager:
 
     def delete(self):
         if self._id is None:
-            raise ValueError("Manager must have an id to be deleted")
-        sql = "DELETE FROM Manager WHERE id = ?"
+            raise ValueError("manager must have an id to be deleted")
+        sql = "DELETE FROM manager WHERE id = ?"
         cursor.execute(sql, (self._id,))
         conn.commit()
         self._id = None
 
     @classmethod
     def find_by_id(cls, manager_id):
-        sql = "SELECT * FROM Manager WHERE id = ?"
+        sql = "SELECT * FROM manager WHERE id = ?"
         cursor.execute(sql, (manager_id,))
         row = cursor.fetchone()
         if row:
@@ -145,7 +145,7 @@ class Manager:
 
     @classmethod
     def get_all(cls):
-        sql = "SELECT * FROM Manager"
+        sql = "SELECT * FROM manager"
         cursor.execute(sql)
         rows = cursor.fetchall()
         managers = []
@@ -166,6 +166,6 @@ class Manager:
    
 
     def __repr__(self):
-        return f"<Manager('{self._first_name}', '{self._last_name}', '{self._gender}')>"
+        return f"<manager('{self._first_name}', '{self._last_name}', '{self._gender}')>"
 
 
