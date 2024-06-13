@@ -51,18 +51,21 @@ def create_song():
     song_dict[song.id] = song
     print(f"Song {song.Song_title} created with ID {song.id}")
 
-
 def get_assigned_manager():
- 
-        print("Various Artists assigned to a manager with their various Songs and Genre :")
-        Artist_name = input ("Artist Name :")
-        Gender = input ("Gender :")
-        Email = input ("Email :")
-        Genre_of_Music= input ("Genre of Music :")
-        No_of_Songs_Assigned= input ("No of Songs Assigned :")
-        get_assigned_manager = input ("Manager Assigned :")
-        Exit_app = input ("Exit app :")
-           
+    artist_id = int(input("Enter Artist ID: "))
+    artist = artist_dict.get(artist_id)
+    if artist:
+         manager = manager_dict.get(int(artist.Manager_Assigned))
+         if manager:
+            print(f"Artist: {artist.Artist_Name}, Song Genre: {artist.Genre_of_Music}, Manager:{manager.first_name} {manager.last_name}")
+         else:
+            print(f"Manager with ID {artist.Manager_Assigned} not found")
+    else:
+        print(f"Artist with ID {artist_id} not found ")
+
+def main()
+              
+
         
 
 if __name__ == "__main__":
