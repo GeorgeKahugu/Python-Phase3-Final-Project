@@ -2,7 +2,7 @@ from test import cursor, conn
 
 class Artist:
 
-    def __init__(self, Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned, id= None):
+    def __init__(self, id, Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned):
         self.id = id
         self.Artist_Name = Artist_name
         self.Gender = Gender
@@ -87,7 +87,7 @@ class Artist:
         '''This method will create an Artist table in our db'''
         sql = """
             CREATE TABLE Artist (
-            id INTEGER PRIMARY KEY,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             Artist_Name TEXT NOT NULL,
             Gender TEXT,
             Email TEXT,
@@ -123,8 +123,8 @@ class Artist:
         cursor.execute(sql, (self.Artist_Name, self.Gender,  self.Email, self.Genre_of_Music, self.No_of_songs_Assigned, self.Manager_Assigned))
         conn.commit()
        
-        self.id = cursor.lastrowid
-        print(self.id)
+        self.id = cursor.lastrowid    
+        print(f"Artist{self.Artist_Name} created with ID {self.id}")
        
     def delete(self):
         if self.id is None:
@@ -154,7 +154,7 @@ class Artist:
      
     @classmethod
     def get_all(cls):
-        sql = "SELECT FROM Artist"
+        sql = "SELECT * FROM Artist"
         cursor.execute(sql)
         rows = cursor.fetchall()
         artists = []

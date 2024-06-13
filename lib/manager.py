@@ -3,14 +3,14 @@ from test import cursor, conn
 
 class Manager:
 
-    def __init__(self, first_name, last_name, gender, Email, Phone_Number, Team, No_of_Artists_Assigned, id=None):
+    def __init__(self, first_name, last_name, gender, Email, Phone_Number, Genre, No_of_Artists_Assigned, id=None):
         self._id = id
         self._first_name = first_name
         self._last_name = last_name
         self._gender = gender
         self._Email = Email
         self._Phone_Number = Phone_Number
-        self._Team = Team
+        self._Team = Genre
         self._No_of_Artists_Assigned = No_of_Artists_Assigned
 
     @property
@@ -58,12 +58,12 @@ class Manager:
         self._Phone_Number = value
 
     @property
-    def Team(self):
-        return self._Team
+    def Genre(self):
+        return self._Genre
 
-    @Team.setter
-    def Team(self, value):
-        self._Team = value
+    @Genre.setter
+    def Genre(self, value):
+        self._Genre = value
 
     @property
     def No_of_Artists_Assigned(self):
@@ -84,7 +84,7 @@ class Manager:
             gender TEXT,
             Email TEXT,
             Phone_Number TEXT NOT NULL,
-            Team TEXT,
+            Genre TEXT,
             No_of_Artists_Assigned INTEGER
             )
         """
@@ -107,7 +107,7 @@ class Manager:
             gender,
             Email,
             Phone_Number,
-            Team,
+            Genre,
             No_of_Artists_Assigned
             ) VALUES (?, ?, ?, ?, ?, ?, ?)
         """
@@ -138,7 +138,7 @@ class Manager:
                 gender=row[3],
                 Email=row[4],
                 Phone_Number=row[5],
-                Team=row[6],
+                Genre=row[6],
                 No_of_Artists_Assigned=row[7]
             )
         return None
@@ -157,7 +157,7 @@ class Manager:
                 gender=row[3],
                 Email=row[4],
                 Phone_Number=row[5],
-                Team=row[6],
+                Genre=row[6],
                 No_of_Artists_Assigned=row[7]
             )
             manager.append(manager)

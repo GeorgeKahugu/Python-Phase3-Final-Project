@@ -87,8 +87,8 @@ manager4 = Manager("Samantha", "Williams", "Female", "samanthawilliams@iworld.co
 
 
 #Adding Artists to the Database
-artist1 = Artist("Breezy", "Male", "breezy@artistworld.com", "RnB", 2, "Clive", 1 )
-artist2 = Artist (  "Ivy", "Female", "Ivy@artistworld.com", "Rnb", 2, "Clive", 2)
+artist1 = Artist("Breezy", "Male", "breezy@artistworld.com", "RnB", 2, "Clive",1)
+artist2 = Artist (  "Ivy", "Female", "Ivy@artistworld.com", "Rnb", 2, "Clive",2)
 
 
 

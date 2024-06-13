@@ -1,4 +1,5 @@
 
+# from lib import song
 from manager import Manager
 from artist import Artist
 from song import Song
@@ -25,7 +26,7 @@ def create_manager():
       manager.save()
       managers.append(manager)
       manager_dict[manager.id] = manager
-      print(f"Manager {manager.first_name} {manager.last_name} created with ID {song.id}")
+      print(f"Manager {manager.first_name} {manager.last_name}")
 
 #creating artist class in cli
 def create_artist():
@@ -33,9 +34,11 @@ def create_artist():
       Gender = input("Gender: ")
       Email = input("Email: ")
       Genre_of_Music = input("Genre of Music: ")
-      Manager_assigned = input("Manager Assigned(ID): ")
+      No_of_songs_assigned = int(input("Number of Songs Assigned: "))
+      Manager_assigned = input("Manager Assigned(first_name last_name): ")
 
-      artist= Artist(Artist_name, Gender, Email, Genre_of_Music, Genre_of_Music, Manager_assigned)
+    #   artist_id = generate_artist_id()    
+      artist= Artist(Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned, id)
       artist.save()
       artists.append(artist)
       artist_dict[artist.id] = artist
