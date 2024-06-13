@@ -1,4 +1,4 @@
-# lib/cli.py
+
 from manager import Manager
 from artist import Artist
 from song import Song
@@ -33,14 +33,15 @@ def create_artist():
       Gender = input("Gender: ")
       Email = input("Email: ")
       Genre_of_Music = input("Genre of Music: ")
-      No_of_songs_assigned = input("Manager Assigned(ID): ")
+      Manager_assigned = input("Manager Assigned(ID): ")
 
-      artist= Artist(Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned)
+      artist= Artist(Artist_name, Gender, Email, Genre_of_Music, Genre_of_Music, Manager_assigned)
       artist.save()
       artists.append(artist)
       artist_dict[artist.id] = artist
       print(f"Artist{artist.Artist_Name} created with ID {artist.id}")
 
+#creating a song in the CLI
 def create_song():
     Song_title = input("Song Title: ")
     Genre = input("Genre: ")
@@ -51,6 +52,7 @@ def create_song():
     song_dict[song.id] = song
     print(f"Song {song.Song_title} created with ID {song.id}")
 
+#get the assigned manager in the CLI
 def get_assigned_manager():
     artist_id = int(input("Enter Artist ID: "))
     artist = artist_dict.get(artist_id)
@@ -63,11 +65,29 @@ def get_assigned_manager():
     else:
         print(f"Artist with ID {artist_id} not found ")
 
-def main()
-              
+#printing the classes created 
+def main():
+    while True:
+        print("\n1. Create Manager")
+        print("2. Create Artist")
+        print("3. Create Song")
+        print("4. Get Assigned Manager for an Artist")
+        print("5. Exit")
+        choice = input("Enter your choice: ")
 
-        
+        if choice == '1':
+            create_manager()
+        elif choice == '2':
+            create_artist()
+        elif choice =='3':
+            create_song()
+        elif choice == '4':
+            get_assigned_manager()
+        elif choice == '5':
+            break
+        else:
+            print("Invalid choice. Please choose a valid option.") 
 
 if __name__ == "__main__":
-    get_assigned_manager()
+   main()
 
