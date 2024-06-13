@@ -3,15 +3,15 @@ from test import cursor, conn
 
 class Manager:
 
-    def __init__(self, first_name, last_name, gender, Email, Phone_Number, Genre, No_of_Artists_Assigned, id=None):
+    def __init__(self, first_name, last_name, gender, email, phone_number, genre, no_of_artists_assigned, id = None):
         self._id = id
         self._first_name = first_name
         self._last_name = last_name
         self._gender = gender
-        self._Email = Email
-        self._Phone_Number = Phone_Number
-        self._Genre = Genre
-        self._No_of_Artists_Assigned = No_of_Artists_Assigned
+        self._email = email
+        self._phone_number = phone_number
+        self._genre = genre
+        self._no_of_artists_assigned = no_of_artists_assigned
 
     @property
     def id(self):
@@ -42,36 +42,36 @@ class Manager:
         self._gender = value
 
     @property
-    def Email(self):
-        return self._Email
+    def email(self):
+        return self._email
 
-    @Email.setter
-    def Email(self, value):
-        self._Email = value
-
-    @property
-    def Phone_Number(self):
-        return self._Phone_Number
-
-    @Phone_Number.setter
-    def Phone_Number(self, value):
-        self._Phone_Number = value
+    @email.setter
+    def email(self, value):
+        self._email = value
 
     @property
-    def Genre(self):
-        return self._Genre
+    def phone_pumber(self):
+        return self._phone_number
 
-    @Genre.setter
-    def Genre(self, value):
-        self._Genre = value
+    @phone_number.setter
+    def phone_number(self, value):
+        self._phone_number = value
 
     @property
-    def No_of_Artists_Assigned(self):
-        return self._No_of_Artists_Assigned
+    def genre(self):
+        return self._genre
 
-    @No_of_Artists_Assigned.setter
-    def No_of_Artists_Assigned(self, value):
-        self._No_of_Artists_Assigned = value
+    @genre.setter
+    def genre(self, value):
+        self._genre = value
+
+    @property
+    def no_of_artists_assigned(self):
+        return self._no_of_artists_assigned
+
+    @no_of_artists_assigned.setter
+    def no_of_artists_assigned(self, value):
+        self._no_of_artists_assigned = value
 
     @classmethod
     def create_table(cls):
@@ -82,10 +82,10 @@ class Manager:
             first_name TEXT NOT NULL,
             last_name TEXT NOT NULL,
             gender TEXT,
-            Email TEXT,
-            Phone_Number TEXT NOT NULL,
-            Genre TEXT,
-            No_of_Artists_Assigned INTEGER
+            email TEXT,
+            phone_number TEXT NOT NULL,
+            genre TEXT,
+            no_of_artists_Assigned INTEGER
             )
         """
         cursor.execute(sql)
@@ -105,13 +105,13 @@ class Manager:
             first_name,
             last_name,
             gender,
-            Email,
-            Phone_Number,
-            Genre,
-            No_of_Artists_Assigned
+            email,
+            phone_number,
+            genre,
+            no_of_artists_assigned
             ) VALUES (?, ?, ?, ?, ?, ?, ?)
         """
-        cursor.execute(sql, (self._first_name, self._last_name, self._gender, self._Email, self._Phone_Number, self._Team, self._No_of_Artists_Assigned))
+        cursor.execute(sql, (self._first_name, self._last_name, self._gender, self._email, self._phone_number, self._genre, self._no_of_artists_assigned))
         conn.commit()
         
         self._id = cursor.lastrowid
@@ -136,10 +136,10 @@ class Manager:
                 first_name=row[1],
                 last_name=row[2],
                 gender=row[3],
-                Email=row[4],
-                Phone_Number=row[5],
-                Genre=row[6],
-                No_of_Artists_Assigned=row[7]
+                email=row[4],
+                phone_number=row[5],
+                genre=row[6],
+                no_of_artists_assigned=row[7]
             )
         return None
 
@@ -148,20 +148,20 @@ class Manager:
         sql = "SELECT * FROM Manager"
         cursor.execute(sql)
         rows = cursor.fetchall()
-        manager = []
+        managers = []
         for row in rows:
             manager = cls(
                 id=row[0],
                 first_name=row[1],
                 last_name=row[2],
                 gender=row[3],
-                Email=row[4],
-                Phone_Number=row[5],
-                Genre=row[6],
-                No_of_Artists_Assigned=row[7]
+                email=row[4],
+                phone_number=row[5],
+                genre=row[6],
+                no_of_artists_assigned=row[7]
             )
             manager.append(manager)
-        return manager
+        return managers
 
    
 

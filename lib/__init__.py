@@ -77,9 +77,9 @@ print(all_songs)
 
 
 #Adding Managers to the Database
-manager1 = Manager("Clive", "Brown", "Male", "clivebrown@iworld.com",  "+1972345672", "Lion", 2)
+manager1 = Manager("Clive", "Brown", "Male", "clivebrown@iworld.com",  "+1972345672", "RnB", 2)
 
-manager2 = Manager("Nadia", "Ross", "Female", "nadiaross@iworld.com", "+1975467231", "Panther", 2)
+manager2 = Manager("Nadia", "Ross", "Female", "nadiaross@iworld.com", "+1975467231", "", 2)
 
 manager3 = Manager("James", "Roberts", "Male", "jamesroberts@iworld.com", "+2547865432", "Tiger", 2)
 

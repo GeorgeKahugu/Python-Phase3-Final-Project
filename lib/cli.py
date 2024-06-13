@@ -19,10 +19,10 @@ def create_manager():
       gender = input ("Gender: ")
       Email = input ("Email: ")
       phone_number = input ("Phone Number: ")
-      Team=input("Team: ")
+      Genre=input("Genre: ")
       No_of_Artists_Assigned=int(input("Number of Artists Assigned: "))
 
-      manager=Manager(first_name, last_name, gender, Email, phone_number, Team, No_of_Artists_Assigned)
+      manager=Manager(first_name, last_name, gender, Email, phone_number, Genre, No_of_Artists_Assigned)
       manager.save()
       managers.append(manager)
       manager_dict[manager.id] = manager
