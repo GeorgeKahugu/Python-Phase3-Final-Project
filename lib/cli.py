@@ -30,19 +30,18 @@ def create_manager():
 
 #creating artist class in cli
 def create_artist():
-      Artist_name = input("Artist Name: ")
-      Gender = input("Gender: ")
-      Email = input("Email: ")
-      Genre_of_Music = input("Genre of Music: ")
-      No_of_songs_assigned = int(input("Number of Songs Assigned: "))
-      Manager_assigned = input("Manager Assigned(first_name last_name): ")
+    Artist_name = input("Artist Name: ")
+    Gender = input("Gender: ")
+    Email = input("Email: ")
+    Genre_of_Music = input("Genre of Music: ")
+    No_of_songs_assigned = int(input("Number of Songs Assigned: "))
+    Manager_assigned = input("Manager Assigned(first_name last_name): ")
 
-    #   artist_id = generate_artist_id()    
-      artist= Artist(Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned, id)
-      artist.save()
-      artists.append(artist)
-      artist_dict[artist.id] = artist
-      print(f"Artist{artist.Artist_Name} created with ID {artist.id}")
+    artist = Artist(Artist_name=Artist_name, Gender=Gender, Email=Email, Genre_of_Music=Genre_of_Music, No_of_songs_assigned=No_of_songs_assigned, Manager_assigned=Manager_assigned)
+    artist.save()
+    artists.append(artist)
+    artist_dict[artist.id] = artist
+    print(f"Artist {artist.Artist_Name} created with ID {artist.id}")
 
 #creating a song in the CLI
 def create_song():

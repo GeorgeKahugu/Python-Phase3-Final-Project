@@ -2,7 +2,7 @@ from test import cursor, conn
 
 class Artist:
 
-    def __init__(self, id, Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned):
+    def __init__(self, Artist_name, Gender, Email, Genre_of_Music, No_of_songs_assigned, Manager_assigned,id=None):
         self.id = id
         self.Artist_Name = Artist_name
         self.Gender = Gender
@@ -11,15 +11,6 @@ class Artist:
         self.No_of_songs_Assigned = No_of_songs_assigned
         self.Manager_Assigned = Manager_assigned
 
-    @property
-    def id(self):
-        return self._id
-    
-    @id.setter
-    def id(self, value):
-        if not isinstance(value, int):
-            raise TypeError("id must be an integer")
-        self._id = value
     
     @property
     def Artist_Name(self):

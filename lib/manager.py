@@ -10,7 +10,7 @@ class Manager:
         self._gender = gender
         self._Email = Email
         self._Phone_Number = Phone_Number
-        self._Team = Genre
+        self._Genre = Genre
         self._No_of_Artists_Assigned = No_of_Artists_Assigned
 
     @property
