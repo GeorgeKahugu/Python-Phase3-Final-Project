@@ -26,7 +26,7 @@ def create_manager():
       manager.save()
       managers.append(manager)
       manager_dict[manager.id] = manager
-      print(f"Manager {manager.first_name} {manager.last_name}")
+      print(f"Manager {manager.first_name} {manager.last_name} created with ID {manager.id}")
 
 #creating artist class in cli
 def create_artist():
