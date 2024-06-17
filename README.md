@@ -6,11 +6,11 @@
 
 ### Description of the project -
 
-The Music Management CLI Application allows users to manage managers,artists ans songs with a music management system. Users can create managers with details such as name,gender,contact information,genre specialization and the number of artists managed. Artists can be created with details including name,gender,email,music genre,number of songs assigned and manager assignment. Additionally, users can create songs by specifying the song title and genre
+The Music Management CLI Application allows users to manage managers,artists ans songs with a music management system. Users can create managers with details such as name,gender,contact information,genre specialization and the number of artists managed. Artists can be created with details including name,gender,email,music genre,number of songs assigned and manager assigned. Additionally, users can create songs by specifying the song title and genre
 
 ## Features
 
-### Create a manager
+### Create a Manager
 
     -Users can create a manager with details such as first name, last name, gender, email, phone number, genre specialization and number of artists managed.
      - Stores manager details in memory and provides a unique ID for each manager.
@@ -27,7 +27,7 @@ The Music Management CLI Application allows users to manage managers,artists ans
 
 ### Get Assigned Manager
 
-    - Retrieves and displays the manger assigned to a specific artist based on artist ID.
+    - Retrieves and displays the manager assigned to a specific artist based on artist ID.
     - Provide details about the artist and their assigned manager.
 
 ## How to Use
