@@ -1,7 +1,7 @@
 
 from test import cursor, conn      
 
-#Calling the Manager class
+#Define the Manager class
 class Manager:
 
     def __init__(self, first_name, last_name, gender, email, phone_number, genre, no_of_artists_assigned, id = None):
@@ -14,6 +14,7 @@ class Manager:
         self._genre = genre
         self._no_of_artists_assigned = no_of_artists_assigned
 
+#Property and setter methods for the Manager attributes
     @property
     def id(self):
         return self._id
@@ -75,6 +76,7 @@ class Manager:
         self._no_of_artists_assigned = value
 
 #Calling the class methods ORM using CRUD operations specifically(create,delete,get all and find by id) as per the brief  
+#Create the manager table
     @classmethod
     def create_table(cls):
         '''This method will create a manager table in our db'''
@@ -93,6 +95,7 @@ class Manager:
         cursor.execute(sql)
         conn.commit()
 
+#Drop the manager table
     @classmethod
     def drop_table(cls):
         sql = """
@@ -100,7 +103,8 @@ class Manager:
         """
         cursor.execute(sql)
         conn.commit()
-
+        
+#Save the manager to the database
     def save(self):
         sql = """
             INSERT INTO manager (
@@ -119,6 +123,7 @@ class Manager:
         self._id = cursor.lastrowid
         print(self._id)
 
+#Delete the manager from the database
     def delete(self):
         if self._id is None:
             raise ValueError("manager must have an id to be deleted")
@@ -127,6 +132,7 @@ class Manager:
         conn.commit()
         self._id = None
 
+#Find a manager by ID
     @classmethod
     def find_by_id(cls, manager_id):
         sql = "SELECT * FROM manager WHERE id = ?"
@@ -144,7 +150,8 @@ class Manager:
                 no_of_artists_assigned=row[7]
             )
         return None
-
+    
+#Get all managers from the database
     @classmethod
     def get_all(cls):
         sql = "SELECT * FROM manager"
@@ -166,7 +173,7 @@ class Manager:
         return managers
 
    
-
+#String representation of the manager
     def __repr__(self):
         return f"<manager('{self._first_name}', '{self._last_name}', '{self._gender}')>"
 

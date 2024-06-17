@@ -35,9 +35,8 @@ def create_artist():
     email = input("email: ")
     genre_of_music = input("Genre of Music: ")
     no_of_songs_assigned = int(input("Number of Songs Assigned: "))
-    manager_assigned = input("Manager Assigned(first_name last_name): ")
-
-    artist = Artist(artist_name=artist_name, gender=gender, email=email, genre_of_music=genre_of_music, no_of_songs_assigned=no_of_songs_assigned, manager_assigned=manager_assigned)
+   
+    artist = Artist(artist_name=artist_name, gender=gender, email=email, genre_of_music=genre_of_music, no_of_songs_assigned=no_of_songs_assigned, manager_assigned=manager.id)
     artist.save()
     artists.append(artist)
     artist_dict[artist.id] = artist
@@ -53,7 +52,7 @@ def create_song():
     song_dict[song.id] = song
     print(f"Song {song.song_title} created with ID {song.id}")
 
-#get the assigned manager in the CLI
+#get the assigned manager to an artist in the CLI
 def get_assigned_manager():
     artist_id = int(input("Enter Artist ID: "))
     artist = artist_dict.get(artist_id)
@@ -66,7 +65,7 @@ def get_assigned_manager():
     else:
         print(f"Artist with ID {artist_id} not found ")
 
-#printing the classes created 
+#printing the classes created (Main Menu)
 def main():
     while True:
         print("\n1. Create Manager")
