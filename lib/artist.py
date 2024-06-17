@@ -1,6 +1,6 @@
 from test import cursor, conn
 
-#creating an Artist class
+#Define the Artist class
 class Artist:
     
 
@@ -13,7 +13,7 @@ class Artist:
         self.no_of_songs_assigned = no_of_songs_assigned
         self.manager_assigned = manager_assigned
 
-    #property and setter methods
+    #Property and setter methods for the Artist atrributes
     @property
     def artist_name(self):
         return self._artist_name
@@ -74,6 +74,8 @@ class Artist:
     
      
 #Calling the class methods ORM using CRUD operations specifically(create,delete,get all and find by id) as per the brief  
+
+    #Create the artist table
     @classmethod
     def create_table(cls):
         '''This method will create an artist table in our db'''
@@ -92,6 +94,7 @@ class Artist:
         cursor.execute(sql)
         conn.commit()
 
+    #Drop the artist table
     @classmethod
     def drop_table(cls):
         sql = """
@@ -100,6 +103,7 @@ class Artist:
         cursor.execute(sql)
         conn.commit()
 
+    #Save the artist to the database
     def save(self):
         sql = """
            INSERT INTO artist(
@@ -117,7 +121,8 @@ class Artist:
        
         self.id = cursor.lastrowid    
         print(f"artist{self.artist_name} created with ID {self.id}")
-       
+
+    #Delete the artist from the database   
     def delete(self):
         if self.id is None:
             raise Exception("You can't delete an artist that doesn't exist")
@@ -126,7 +131,7 @@ class Artist:
         conn.commit()
         self.id = None
 
-
+    #Find an artist by ID
     @classmethod
     def find_by_id(cls, artist_id):
         sql = "SELECT * FROM artist WHERE id = ?"
@@ -143,7 +148,8 @@ class Artist:
                 id=row[0]
             )
         return None
-     
+
+    #Get all artists from the database 
     @classmethod
     def get_all(cls):
         sql = "SELECT * FROM artist"
@@ -162,7 +168,8 @@ class Artist:
             )
             artists.append(artist)
         return artists
-        
+    
+    #String represenatation of the artist    
     def __repr__(self):
         return f"<artist('{self.artist_name}', '{self.gender}, '{self.email}')>"
          
