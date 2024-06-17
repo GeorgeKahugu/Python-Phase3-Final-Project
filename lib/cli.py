@@ -35,8 +35,9 @@ def create_artist():
     email = input("email: ")
     genre_of_music = input("Genre of Music: ")
     no_of_songs_assigned = int(input("Number of Songs Assigned: "))
+    manager_assigned = input ("Manager Assigned: ")
    
-    artist = Artist(artist_name=artist_name, gender=gender, email=email, genre_of_music=genre_of_music, no_of_songs_assigned=no_of_songs_assigned, manager_assigned=manager.id)
+    artist = Artist(artist_name=artist_name, gender=gender, email=email, genre_of_music=genre_of_music, no_of_songs_assigned=no_of_songs_assigned, manager_assigned=manager_assigned)
     artist.save()
     artists.append(artist)
     artist_dict[artist.id] = artist
@@ -61,7 +62,7 @@ def get_assigned_manager():
          if manager:
             print(f"Artist: {artist.artist_name}, Song Genre: {artist.genre_of_music}, Manager:{manager.first_name} {manager.last_name}")
          else:
-            print(f"Manager with ID {artist.manager_assigned} was found")
+            print(f"Manager is {artist.manager_assigned} ")
     else:
         print(f"Artist with ID {artist_id} not found ")
 
